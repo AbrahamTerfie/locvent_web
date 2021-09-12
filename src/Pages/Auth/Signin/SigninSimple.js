@@ -37,7 +37,7 @@ const SigninSimple = () => {
                 <LearnMoreLink
                   color="primary"
                   title="Sign up."
-                  href="/register"
+                  href="/signUp"
                   typographyProps={{ variant: "h6" }}
                 />
               </span>
