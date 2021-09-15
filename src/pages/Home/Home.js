@@ -2,6 +2,7 @@ import React from "react";
 import Cards from "../../Components/Cards";
 import { Row, Col } from "reactstrap";
 import ReportGraph from "../../Components/ReportGraph";
+import Infocards from "../../Components/Infocards";
 const Home = () => {
   return (
     <div className="container">
@@ -50,8 +51,14 @@ const Home = () => {
           <Col md="8">
             <ReportGraph />
           </Col>
-          <Col md="4">
-            <h1>thie</h1>
+          <Col md="4" className="mt-4">
+
+              <Infocards title="resolved" value="30"  />
+              <Infocards  title="recived" value="20" />
+              <Infocards title="avg responce time" value="40" />
+              <Infocards title="avg first response time" value="60" />
+              <Infocards title="resolution with SLA" value="20"  />
+
           </Col>
         </Row>
       </div>
