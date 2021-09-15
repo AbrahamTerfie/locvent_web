@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Cards( {title , value}) {
+export default function Cards({ title, value }) {
   return (
     <div
       style={{
@@ -10,23 +10,27 @@ export default function Cards( {title , value}) {
         borderRadius: "5px",
         backgroundColor: "#F7F8FC",
         padding: "1em",
-margin: "4em",
+        margin: "4em",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
       }}
     >
-      <h6 
-      style={{
-        color: "#095B59",
-      }}
-      >{title}</h6>
+      <h6
+        style={{
+          color: "#095B59",
+        }}
+      >
+        {title}
+      </h6>
       <h2
         style={{
-            color: "#095B59",
-          }}
-      >{value}</h2>
+          color: "#095B59",
+        }}
+      >
+        {value}
+      </h2>
     </div>
   );
 }
