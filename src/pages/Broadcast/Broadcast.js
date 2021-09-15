@@ -40,9 +40,7 @@ const Broadcast = () => {
             <MessageSeparator content="Saturday, 30 November 2019" />
 
             <Message
-              style={{
-                color: "#f55",
-              }}
+              
               model={{
                 message: "Hello my friend",
                 sentTime: "15 mins ago",
