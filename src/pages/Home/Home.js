@@ -1,13 +1,53 @@
-import React from 'react'
+import React from "react";
+import Cards from "../../Components/Cards";
 const Home = () => {
   return (
     <div className="container">
-    
-    <h1 className="text-center" style={{paddingTop: "30%"}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "left",
+            fontSize: "2.5rem",
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: "bold",
+            margin: "25px",
+            color: "#095B59",
+          }}
+        >
+          Overview
+        </h2>
+
+        <h4
+          style={{
+            color: "#095B59",
+            fontFamily: "Roboto, sans-serif",
+            margin: "25px",
+          }}
+        >
+          Abrham Terfie
+        </h4>
+      </div>
+
+      <div
+      style={{
+        display: "flex",
+      }}
+      >
+        <Cards title="new reports" value="89" />
+        <Cards title="active agents" value="78" />
+        <Cards title="faulty reports" value="2" />
+        <Cards title="on hold" value="20" />
+      </div>
+      <div>graphs</div>
+      {/* <h1 className="text-center" style={{paddingTop: "30%"}}>
       Home page
-    </h1>
-    
-  </div>
-  )
-}
+    </h1> */}
+    </div>
+  );
+};
 export default Home;
