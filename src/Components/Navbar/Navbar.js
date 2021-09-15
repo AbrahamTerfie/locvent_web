@@ -46,8 +46,18 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
-      <NavLink className="navbar-brand navbar-logo" to={routes.home} exact>
-        locvent
+      <NavLink
+        style={{
+          fontFamily: "sans-serif",
+          fontSize: "1.8em",
+          fontWeight: "100",
+          paddingLeft:'5em'
+        }}
+        className="navbar-brand navbar-logo"
+        to={routes.home}
+        exact
+      >
+        locvent admin
       </NavLink>
 
       <button
@@ -69,11 +79,12 @@ const Navbar = () => {
 
       <div
         style={{
-          display: "flex",
+          // display: "flex",
           justifyContent: "flex-end",
+
           paddingRight: "20px",
           paddingBottom: "0px",
-          margin: "0px",
+          marginBottom: "0px",
         }}
         className="collapse navbar-collapse"
         id="navbarSupportedContent"

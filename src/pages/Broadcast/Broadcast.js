@@ -11,18 +11,20 @@ import {
   MessageSeparator,
   AttachmentButton,
   TypingIndicator,
-  InfoButton,
-  VoiceCallButton,
   InputToolbox,
   SendButton,
-  VideoCallButton,
   Avatar,
 } from "@chatscope/chat-ui-kit-react";
+import { Row, Col } from "reactstrap";
 
 const Broadcast = () => {
   return (
-    <div className="container">
-      <div
+    <Row className="container m-4 p-4  mt-0 pt-0 ">
+      <Col md={6}>
+        <h1> notive posting aera </h1>
+      </Col>
+      <Col
+        md={6}
         style={{
           height: "90vh",
         }}
@@ -40,7 +42,6 @@ const Broadcast = () => {
             <MessageSeparator content="Saturday, 30 November 2019" />
 
             <Message
-              
               model={{
                 message: "Hello my friend",
                 sentTime: "15 mins ago",
@@ -314,8 +315,8 @@ const Broadcast = () => {
             <SendButton />
           </InputToolbox>
         </ChatContainer>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 export default Broadcast;

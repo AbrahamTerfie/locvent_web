@@ -36,12 +36,10 @@ export default function App() {
      <Navbar/>
      <main>
        <Switch>
-         <Route path="/" exact>
+         <Route path={routes.home} exact>
            <Home/>
          </Route>
-         <Route path="/about" exact>
-           <About/>
-         </Route>
+        
          <Route path={routes.broadcast} exact>
            <Broadcast/>
          </Route>
