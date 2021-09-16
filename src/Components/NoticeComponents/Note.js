@@ -67,7 +67,7 @@ export function Note() {
           outline
           color="danger"
           className="m-2"
-          onClick={() => removeNote(note.id)}
+          onClick={() => removeNote(note._id)}
         >
           delete
         </Button>

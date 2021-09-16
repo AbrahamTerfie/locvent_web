@@ -38,11 +38,47 @@ export default function Store({ children }) {
   }
 
   function addNote(note) {
-    setNotes((prev) => [note, ...prev]);
+    
+    const requestOptions2 = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: note.text
+      ,
+      }),
+    };
+    let urlcath = `${APILINK}/api/broadCast/addBroadCast`;
+     fetch(urlcath, requestOptions2).then((data)=>{
+       if(data.status == 200){
+        //setNotes(notes.filter((note) => note._id !== id));
+         setNotes((prev) => [note, ...prev]);
+       }
+     })
+
   }
 
   function removeNote(id) {
-    setNotes(notes.filter((note) => note.id !== id));
+    const requestOptions2 = {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id
+      ,
+      }),
+    };
+    let urlcath = `${APILINK}/api/broadCast/deleteBroadCast`;
+     fetch(urlcath, requestOptions2).then((data)=>{
+       if(data.status == 200){
+        setNotes(notes.filter((note) => note._id !== id));
+       }
+     })
+    
   }
   function authenticate(response, json) {
     if (response === 200) {
@@ -53,10 +89,40 @@ export default function Store({ children }) {
   }
 
   function editNote(note) {
-    const index = notes.indexOf(note);
-    const tempArray = [...notes];
-    tempArray[index] = note;
-    setNotes(tempArray);
+    if(note.isEditing == false){
+      console.log(note)
+      //updateBroadCast
+      const index = notes.indexOf(note);
+      const tempArray = [...notes];
+      tempArray[index] = note;
+      const requestOptions2 = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: note._id,
+          text : note.text
+        ,
+        }),
+      };
+      let urlcath = `${APILINK}/api/broadCast/updateBroadCast`;
+       fetch(urlcath, requestOptions2).then((data)=>{
+         if(data.status == 200){
+          setNotes(tempArray);
+        }
+       })
+       
+      
+    }
+    else{
+      const index = notes.indexOf(note);
+      const tempArray = [...notes];
+      tempArray[index] = note;
+      setNotes(tempArray);
+    }
+    
   }
 
   async function login(UserName, password) {
@@ -78,6 +144,8 @@ export default function Store({ children }) {
       console.log("login data", json);
       authenticate(response.status, json);
       setUserData(json);
+      localStorage.setItem("user", JSON.stringify(json));
+ 
       console.log("login response ", response.status);
     } catch (error) {
       console.log("login error from api  :", error);
@@ -102,7 +170,7 @@ export default function Store({ children }) {
       const data = await fetch(url);
       const resp = await data.json();
       setActiveAgents(resp);
-      console.log("report data response ", resp);
+      console.log("get active agents   response ", resp);
     } catch (error) {
       console.log("reportsÎ error from api  :", error);
     }

@@ -27,13 +27,12 @@ function AppContainer() {
 
   return (
     <Router>
-      {loggedIN ? <Navbar /> : null}
+      { JSON.parse(localStorage.getItem("user")).token ?   <Navbar /> : null}
 
       <main>
         <Switch>
           <Route path={routes.home} exact>
-            {loggedIN ?
-              null
+            { JSON.parse(localStorage.getItem("user")).token  ?    null
               : <Login />
             }
           </Route>
