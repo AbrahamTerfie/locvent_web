@@ -1,8 +1,7 @@
 .App {
   /* text-align: center;s */
-  background-color: #074947;
+  /* background-color: #074947; */
 }
-
 
 .App-logo {
   height: 40vmin;
@@ -68,7 +67,16 @@
 /* } */
 
 .loginContainer {
+  border: 2px solid #095b59;
+  border-radius: 1em;
+  width: 40em;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5%;
+  margin-left: 23%;
   border-radius: 17px;
-  background: linear-gradient(145deg, #085250, #0a615f);
+  /* background: linear-gradient(145deg, #085250, #0a615f); */
   box-shadow: 5px 5px 10px #074947, -5px -5px 10px #0b6d6b;
 }

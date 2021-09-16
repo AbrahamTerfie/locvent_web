@@ -1,33 +1,27 @@
 import React from "react";
 import { Col, Form, FormGroup, Input, Button } from "reactstrap";
 import LOGO from "../../Assets/LOGO.png";
+import { routes } from "../../Routes/routes";
+import { Link } from "react-router-dom";
 export default function Login() {
   return (
-    <div
-    className='loginContainer'
-      style={{
-        padding: "5em",
-        height:'100vh',
-        // width: "60em",
-        backgroundColor: "#095B59",
-
-        borderRadius: "5px",
-        justifySelf: "center",
-
-      }}
-    >
-      <img  
-      style={{
-          height: "7em",
-          width: "7em",
-      }}
-      src={LOGO} alt="Logo" />
+    <div className="loginContainer">
+      <img
+        style={{
+          marginLeft: "35%",
+          //   height: "10em",
+          width: "8em",
+        }}
+        src={LOGO}
+        alt="Logo"
+      />
       <h2
         className="text-center"
         style={{
-          color: "#fff",
+          color: "#095B59",
           textAlign: "center",
           margin: "1.3em",
+          letterSpacing: "0.2em",
           fontFamily: "Roboto, sans-serif",
           fontWeight: "lighter",
           alignContent: "space-around",
@@ -36,64 +30,57 @@ export default function Login() {
         locvent - admin{" "}
       </h2>
       <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <FormGroup>
-            <Col sm={10} md={12}>
-              <Input
-                style={{
-                  color: "#095B59",
-                  fontSize: "1.5em",
-                  height: "1em",
-                  border: "2px solid #095B59",
-                }}
-                type="text"
-                name="userName"
-                id="userName"
-                placeholder="lg"
-                bsSize="lg"
-                color="secondary"
-              />
-            </Col>
+        <div>
+          <FormGroup className=" mt-1 m-4 p-4">
+            <Input
+              style={{
+                color: "#095B59",
+                fontSize: "1.5em",
+
+                border: "2px solid #095B59",
+              }}
+              type="text"
+              name="userName"
+              id="userName"
+              placeholder="user name"
+              bsSize="lg"
+              color="secondary"
+            />
           </FormGroup>
-          <FormGroup>
-            <Col sm={10} md={12}>
-              <Input
-                style={{
-                  color: "#095B59",
-                  fontSize: "1.5em",
-                  height: "1em",
-                  border: "2px solid #095B59",
-                }}
-                type="password"
-                name="password"
-                id="password"
-                placeholder="password"
-                placeholder="lg"
-                bsSize="lg"
-              />
-            </Col>
+          <FormGroup className="m-4 p-4">
+            <Input
+              style={{
+                color: "#095B59",
+                fontSize: "1.5em",
+                border: "2px solid #095B59",
+              }}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              placeholder="password"
+              bsSize="lg"
+            />
           </FormGroup>
-          <div>
-            <Col sm={10} md={12}>
+          <div
+            className="m-4 p-4"
+            style={{
+              color: "#095B59",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Link to={routes.login}>
               <Button
-                style={{
-                  width: "10em",
-                  height: "4em",
-                }}
-                size="bg"
+                style={{ width: "100%", margin: "0 auto" }}
                 color="success"
                 block
                 outline
               >
                 login
               </Button>
-            </Col>
+            </Link>
           </div>
         </div>
       </div>
