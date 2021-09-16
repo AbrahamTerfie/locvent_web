@@ -32,7 +32,7 @@ function AppContainer() {
         <main>
           <Switch>
             <Route path={routes.home} exact>
-              <Login />
+              <Login/>
             </Route>
             <Route path={routes.login} exact>
               <Home />

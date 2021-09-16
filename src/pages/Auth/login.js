@@ -4,14 +4,13 @@ import LOGO from "../../Assets/LOGO.png";
 export default function Login() {
   return (
     <div
-
     className='loginContainer'
       style={{
-      
         padding: "5em",
+        height:'100vh',
         // width: "60em",
         backgroundColor: "#095B59",
-        // border: "2px solid #095B59",
+
         borderRadius: "5px",
         justifySelf: "center",
 
@@ -26,7 +25,7 @@ export default function Login() {
       <h2
         className="text-center"
         style={{
-          color: "#095B59",
+          color: "#fff",
           textAlign: "center",
           margin: "1.3em",
           fontFamily: "Roboto, sans-serif",
