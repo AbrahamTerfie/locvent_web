@@ -5,10 +5,17 @@ import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
 import { Context } from "../../Context/DataContext";
 
-import  lang  from "../../Language/lang.json";
+import lang from "../../Language/lang.json";
 const Home = () => {
-  const { state, getReport, userData, reports, getActiveAgents, activeAgents } =
-    useContext(Context);
+  const {
+    state,
+    getReport,
+    userData,
+    reports,
+    getActiveAgents,
+    activeAgents,
+    langauge,
+  } = useContext(Context);
 
   const [faulty, setFaulty] = useState(0);
   const [onhold, setOnHold] = useState(0);
@@ -45,8 +52,7 @@ const Home = () => {
 
   useEffect(async () => {
     setAgents(activeAgents.length);
-  console.log("langg", lang);
-
+    console.log("langg", lang.amharic);
   }, [activeAgents]);
   return (
     <div className="container">
@@ -66,7 +72,7 @@ const Home = () => {
             color: "#095B59",
           }}
         >
-          Overview
+          {langauge.Overview}
         </h2>
 
         <h4
@@ -85,10 +91,10 @@ const Home = () => {
           display: "flex",
         }}
       >
-        <Cards title="new reports" value={newReport} />
-        <Cards title="active agents" value={agents} />
-        <Cards title="faulty reports" value={faulty} />
-        <Cards title="on hold" value={onhold} />
+        <Cards title={langauge.Newreports} value={newReport} />
+        <Cards title={langauge.ActiveAgents} value={agents} />
+        <Cards title={langauge.Faultyreports} value={faulty} />
+        <Cards title={langauge.Onhold} value={onhold} />
       </div>
       <div>
         <Row>
@@ -96,11 +102,11 @@ const Home = () => {
             <ReportGraph />
           </Col>
           <Col md="4" className="mt-4">
-            <Infocards title="resolved" value="30" />
-            <Infocards title="recived" value="20" />
-            <Infocards title="avg responce time" value="40" />
-            <Infocards title="avg first response time" value="60" />
-            <Infocards title="resolution with SLA" value="20" />
+            <Infocards title={langauge.resolved} value="30" />
+            <Infocards title={langauge.received} value="20" />
+            <Infocards title={langauge.Averagefirstresponsetime} value="40" />
+            <Infocards title={langauge.Averageresponsetime} value="60" />
+            <Infocards title={langauge.resolutionwithinSLA} value="20" />
           </Col>
         </Row>
       </div>

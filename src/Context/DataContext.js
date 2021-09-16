@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-
+import lang from "../Language/lang.json";
 const APILINK = "http://192.168.8.107:5000";
 
 const initState = {
@@ -20,6 +20,20 @@ export default function Store({ children }) {
   const [activeAgents, setActiveAgents] = useState({});
   const [notes, setNotes] = useState([]);
   const [inputNote, setInputNote] = useState("");
+  const [langauge, setLanguage] = useState(lang.amharic);
+
+  function setAmharic() {
+    setLanguage(lang.amharic);
+  }
+
+  function setOromifaa() {
+    setLanguage(lang.oromifa);
+  }
+
+  function setTig() {
+    setLanguage(lang.tig);
+  }
+
   function addNote(note) {
     setNotes((prev) => [note, ...prev]);
   }
@@ -115,6 +129,11 @@ export default function Store({ children }) {
         login,
         loggedIN,
         setLoggedIn,
+        langauge,
+        setLanguage,
+        setAmharic,
+        setOromifaa,
+        setTig
       }}
     >
       {children}

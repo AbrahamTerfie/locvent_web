@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Navbar.css";
 import { routes } from "../../Routes/routes";
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
-
+import { Context } from "../../Context/DataContext";
 
 const Navbar = () => {
+  const { login, langauge } = useContext(Context);
+
   function animation() {
     var tabsNewAnim = $("#navbarSupportedContent");
     var activeItemNewAnim = tabsNewAnim.find(".active");
@@ -62,7 +64,7 @@ const Navbar = () => {
         to={routes.home}
         exact
       >
-        locvent admin
+        {langauge.LocventAdmin}
       </NavLink>
 
       <div
@@ -85,30 +87,34 @@ const Navbar = () => {
 
           <li className="nav-item active">
             <NavLink className="nav-link" to={routes.login} exact>
-              <i className="fas fa-tachometer-alt"></i>Overview
+              <i className="fas fa-tachometer-alt"></i>
+              {langauge.Overview}
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink className="nav-link" to={routes.reports} exact>
-              <i className="far fa-address-book"></i>reports
+              <i className="far fa-address-book"></i>
+              {langauge.Reports}
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink className="nav-link" to={routes.contacts} exact>
-              <i className="far fa-address-book"></i>contacts
+              <i className="far fa-address-book"></i>
+              {langauge.Contacts}
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink className="nav-link" to={routes.broadcast} exact>
-              <i className="far fa-clone"></i>broadcast
+              <i className="far fa-clone"></i>
+              {langauge.Broadcast}
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to={routes.settings} exact>
-              <i className="far fa-chart-bar"></i>settings
+              <i className="far fa-chart-bar"></i>{langauge.settings}
             </NavLink>
           </li>
         </ul>

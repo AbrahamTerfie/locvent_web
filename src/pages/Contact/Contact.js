@@ -7,7 +7,7 @@ import { Context } from "../../Context/DataContext";
 
 const Contact = () => {
 
-  const {activeAgents} = useContext(Context)
+  const {activeAgents , langauge } = useContext(Context)
 
   console.log('agents in Contact ',activeAgents)
 
@@ -29,7 +29,7 @@ const Contact = () => {
           fontSize: ".8em",
           border: "1px solid #e5e5e5",
         }}
-        title="All agents"
+        title={langauge.AllAgets}
         columns={[
           { title: "userName", field: "UserName" },
           { title: "Name", field: "FirstName" },

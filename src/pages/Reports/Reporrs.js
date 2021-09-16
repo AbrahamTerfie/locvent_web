@@ -4,7 +4,7 @@ import React, { useEffect, useContext } from "react";
 import { Context } from "../../Context/DataContext";
 
 const Reports = () => {
-  const { reports } = useContext(Context);
+  const { reports, langauge } = useContext(Context);
   console.log("reportss form reports ", reports);
   // useEffect(async () => {
   //   // this fetch the reports
@@ -23,7 +23,7 @@ const Reports = () => {
         backgroundColor: "#F5F5F5",
       }}
     >
-      <h4 className="p-4"> All Reports </h4>
+      <h4 className="p-4"> {langauge.Reports} </h4>
       <MaterialTable
         style={{
           color: "#095B59",
@@ -31,7 +31,7 @@ const Reports = () => {
           fontSize: ".8em",
           border: "1px solid #e5e5e5",
         }}
-        title="All Reports"
+        title={langauge.Reports}
         columns={[
           // { title: "id", field: "_id" },
           { title: "first name", field: "reporterId.FirstName" },
@@ -40,9 +40,9 @@ const Reports = () => {
           { title: "lattitude", field: "ReportLatitude" },
           { title: "longitude", field: "ReportLongitude" },
 
-          { title: "on hold", field: "isHold", type: "boolean" },
-          { title: "faulty", field: "faulty", type: "boolean" },
-          { title: "resolved", field: "resolved", type: "boolean" },
+          { title: langauge.Onhold, field: "isHold", type: "boolean" },
+          { title: langauge.Faultyreports, field: "faulty", type: "boolean" },
+          { title: langauge.resolved, field: "resolved", type: "boolean" },
         ]}
         data={reports}
         options={{

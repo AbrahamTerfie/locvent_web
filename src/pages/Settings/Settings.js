@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../Context/DataContext";
 
 import { Button } from "reactstrap";
 
 const Settings = () => {
+  const { langauge, setAmharic, setOromifaa, setTig } = useContext(Context);
+  console.log("langguahess", langauge);
+
   return (
     <div className="container mt-4 pt-4">
       <h3>select langauge </h3>
@@ -16,18 +20,18 @@ const Settings = () => {
           justifyContent: "space-around",
         }}
       >
-        <Button outline color="success">
+        <Button onClick={() => setAmharic()} outline color="success">
           amharic{" "}
         </Button>
-        <Button outline color="warning">
+        <Button onClick={() => setTig()} outline color="warning">
           tigregna{" "}
         </Button>
-        <Button outline color="danger">
+        <Button onClick={() => setOromifaa()} outline color="danger">
           oromifaa{" "}
         </Button>
       </div>
       <h1 className="text-center" style={{ paddingTop: "30%" }}>
-        current active langauge : Settings
+        current active langauge : {langauge.LocventAdmin}
       </h1>
     </div>
   );

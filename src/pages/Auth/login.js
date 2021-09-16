@@ -25,7 +25,7 @@ const APILINK =  "http://192.168.8.107:5000/"
 }
 
 export default function Login() {
-  const {login} = useContext(Context);
+  const {login , langauge} = useContext(Context);
 
   const [UserName, setUserName] = useState("");
   const [password, setpassword] = useState("");
@@ -52,7 +52,7 @@ export default function Login() {
           alignContent: "space-around",
         }}
       >
-        locvent - admin{" "}
+        {langauge.LocventAdmin}{" "}
       </h2>
       <div>
         <div>
@@ -110,7 +110,7 @@ export default function Login() {
               block
               outline
             >
-              login
+              {langauge.login}
             </Button>
             {/* </Link> */}
           </div>
