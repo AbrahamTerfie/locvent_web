@@ -15,12 +15,13 @@ const Home = () => {
   const [newReport, setNewReport] = useState(0);
   const [agents, setAgents] = useState(0);
 
-  console.log("this is app state", state);
-
+useEffect(()=>{
+  console.log("after login" , JSON.parse(localStorage.getItem("user")).token)
+} , [])
   useEffect(
     async () => (
       userData
-        ? getActiveAgents(userData.token) && getReport(userData.token)
+        ? getActiveAgents(JSON.parse(localStorage.getItem("user")).token) && getReport( JSON.parse(localStorage.getItem("user")).token )
         : null,
       console.log("user Agents asdf ", activeAgents)
     ),
