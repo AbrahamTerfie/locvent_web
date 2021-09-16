@@ -1,4 +1,6 @@
 import React from "react";
+
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   ChatContainer,
   MessageList,
