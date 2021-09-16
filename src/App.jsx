@@ -20,18 +20,22 @@ import { useLocation } from 'react-router-dom'
 
 function AppContainer() {
 
-  const { state, setState } = useContext(Context)
+  const { loggedIN, setLoggedIn } = useContext(Context)
   const location = useLocation();
   console.log('current route ', location.pathname);
+  console.log('login Status  ', loggedIN);
 
   return (
     <Router>
-      {location.pathname === '/login' ? null : <Navbar />}
+      {loggedIN ? <Navbar /> : null}
 
       <main>
         <Switch>
           <Route path={routes.home} exact>
-            <Login />
+            {loggedIN ?
+              null
+              : <Login />
+            }
           </Route>
           <Route path={routes.login} exact>
             <Home />

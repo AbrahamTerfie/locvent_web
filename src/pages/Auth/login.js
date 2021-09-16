@@ -1,15 +1,40 @@
-import React from "react";
-import {  FormGroup, Input, Button } from "reactstrap";
+import React, { useContext, useState } from "react";
+import { FormGroup, Input, Button } from "reactstrap";
 import LOGO from "../../Assets/LOGO.png";
+import { Context } from "../../Context/DataContext";
 import { routes } from "../../Routes/routes";
 import { Link } from "react-router-dom";
+
+async function callMeDaddy() {
+  const requestOptions2 = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: "admin",
+      password: "admin",
+    }),
+  };
+
+const APILINK =  "http://192.168.8.107:5000/"
+  let urlcath = `${APILINK}api/user/loginAdmin`;
+  let response = await fetch(urlcath, requestOptions2);
+  const json = await response.json();
+}
+
 export default function Login() {
+  const {login} = useContext(Context);
+
+  const [UserName, setUserName] = useState("");
+  const [password, setpassword] = useState("");
+
   return (
     <div className="loginContainer">
       <img
         style={{
           marginLeft: "35%",
-          //   height: "10em",
           width: "8em",
         }}
         src={LOGO}
@@ -45,6 +70,9 @@ export default function Login() {
               placeholder="user name"
               bsSize="lg"
               color="secondary"
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
             />
           </FormGroup>
           <FormGroup className="m-4 p-4">
@@ -60,6 +88,9 @@ export default function Login() {
               placeholder="password"
               placeholder="password"
               bsSize="lg"
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
             />
           </FormGroup>
           <div
@@ -71,16 +102,17 @@ export default function Login() {
               justifyContent: "center",
             }}
           >
-            <Link to={routes.login}>
-              <Button
-                style={{ width: "100%", margin: "0 auto" }}
-                color="success"
-                block
-                outline
-              >
-                login
-              </Button>
-            </Link>
+            {/* <Link to={routes.login}> */}
+            <Button
+              onClick={() => login(UserName, password)}
+              style={{ width: "100%", margin: "0 auto" }}
+              color="success"
+              block
+              outline
+            >
+              login
+            </Button>
+            {/* </Link> */}
           </div>
         </div>
       </div>
