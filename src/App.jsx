@@ -31,12 +31,12 @@ function AppContainer() {
 
       <main>
         <Switch>
-          <Route path={routes.home} exact>
-            {loggedIN ?
-              null
-              : <Login />
-            }
-          </Route>
+          {loggedIN ?
+            null :
+            <Route path={routes.home} exact>
+              <Login />
+            </Route>
+          }
           <Route path={routes.login} exact>
             <Home />
           </Route>
