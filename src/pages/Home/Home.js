@@ -4,13 +4,17 @@ import { Row, Col } from "reactstrap";
 import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
 import { Context } from "../../Context/DataContext";
+
+import  lang  from "../../Language/lang.json";
 const Home = () => {
   const { state, getReport, userData, reports, getActiveAgents, activeAgents } =
     useContext(Context);
+
   const [faulty, setFaulty] = useState(0);
   const [onhold, setOnHold] = useState(0);
   const [newReport, setNewReport] = useState(0);
-  const [agents , setAgents] = useState(0);
+  const [agents, setAgents] = useState(0);
+
   console.log("this is app state", state);
 
   useEffect(
@@ -40,8 +44,10 @@ const Home = () => {
   }, [reports]);
 
   useEffect(async () => {
-    setAgents(activeAgents.length)
-  },[activeAgents])
+    setAgents(activeAgents.length);
+  console.log("langg", lang);
+
+  }, [activeAgents]);
   return (
     <div className="container">
       <div

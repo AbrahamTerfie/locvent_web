@@ -17,13 +17,9 @@ export default function Store({ children }) {
   const [loggedIN, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [reports, setReports] = useState({});
-  const [activeAgents , setActiveAgents] = useState({})
-
-  const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem("notes")) ?? []
-  );
+  const [activeAgents, setActiveAgents] = useState({});
+  const [notes, setNotes] = useState([]);
   const [inputNote, setInputNote] = useState("");
-
   function addNote(note) {
     setNotes((prev) => [note, ...prev]);
   }
@@ -83,9 +79,7 @@ export default function Store({ children }) {
     }
   }
 
-
-
-  async function getActiveAgents(token){
+  async function getActiveAgents(token) {
     try {
       const url = `${APILINK}/api/user/getAllUsers/0/${token}`;
       const data = await fetch(url);
@@ -112,6 +106,7 @@ export default function Store({ children }) {
         state,
         setState,
         notes,
+        setNotes,
         addNote,
         removeNote,
         inputNote,

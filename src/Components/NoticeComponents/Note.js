@@ -5,12 +5,13 @@ import { Button } from "reactstrap";
 import styles from "../../Styles/Note.module.css";
 
 export function Note() {
-  const { notes, removeNote, editNote } = useContext(Context);
+  const { notes, removeNote, editNote  ,setNotes} = useContext(Context);
   const [settedNotes , setNotesFunction] = useState([])
   useEffect(async () => {
     const resp = await fetch('http://192.168.8.107:5000/api/broadCast/getAllBroadCast')
     const json = await resp.json()
-    console.log(json)
+    console.log( "notifications", json)
+    setNotes(json)
   }, [])
 
   function getListItems() {
@@ -45,7 +46,7 @@ export function Note() {
           </div>
         ) : (
           <div>
-            <input type="text" readOnly={true} value={note.text} />
+            <input type="text" readOnly={true} value={note.message} />
             <Button
               size="sm"
               outline
