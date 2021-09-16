@@ -1,7 +1,18 @@
-import React from "react";
+
 import MaterialTable from "material-table";
+import React, { useEffect, useContext } from "react";
+
+import { Context } from "../../Context/DataContext";
+
 
 const Contact = () => {
+
+  const {activeAgents} = useContext(Context)
+
+  console.log('agents in Contact ',activeAgents)
+
+
+ 
   return (
     <div
       style={{
@@ -20,35 +31,15 @@ const Contact = () => {
         }}
         title="All agents"
         columns={[
-          { title: "Name", field: "name" },
-          { title: "Surname", field: "surname" },
-          { title: "Birth Year", field: "birthYear", type: "numeric" },
-          { title: "year joined", field: "dateJoined", type: "date" },
-          { title: "is expert", field: "expert", type: "boolean" },
-          {
-            title: "region",
-            field: "region",
-            tooltip: "Click to filter",
-          },
+          { title: "userName", field: "UserName" },
+          { title: "Name", field: "FirstName" },
+          { title: "Surname", field: "LastName" },
+          { title: "gender", field: "Gender", },
+          { title: "last logged in", field: "LastLogin" },
+          { title: "phone number ", field: "PhoneNumber" },
+          { title: "Type", field: "Role.RoleName",  },
         ]}
-        data={[
-          {
-            name: "Mehmet",
-            surname: "Baran",
-            birthYear: 1987,
-            dateJoined: new Date().getFullYear(),
-            region: "Bolu",
-            expert: true,
-          },
-          {
-            name: "Zerya Betül",
-            surname: "Baran",
-            birthYear: 2017,
-            dateJoined: new Date().getFullYear(),
-            region: "addis ababa",
-            expert: false,
-          },
-        ]}
+        data={activeAgents}
         options={{
           exportButton: true,
         }}

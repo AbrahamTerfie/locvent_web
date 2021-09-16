@@ -3,12 +3,9 @@ import React, { useEffect, useContext } from "react";
 
 import { Context } from "../../Context/DataContext";
 
-
-
 const Reports = () => {
-
-  const {reports} = useContext(Context)
-console.log('reportss form reports ', reports)
+  const { reports } = useContext(Context);
+  console.log("reportss form reports ", reports);
   // useEffect(async () => {
   //   // this fetch the reports
 
@@ -18,7 +15,6 @@ console.log('reportss form reports ', reports)
   //   console.log( "report data response ", resp)
   // }, [])
 
-
   return (
     <div
       style={{
@@ -27,20 +23,6 @@ console.log('reportss form reports ', reports)
         backgroundColor: "#F5F5F5",
       }}
     >
-      {/*
-
-
-report schema 
-report id 
-first name 
-last name 
-lattitude  longitude
-locust 
-is hold 
-faluty report 
-resolved e
-*/}
-
       <h4 className="p-4"> All Reports </h4>
       <MaterialTable
         style={{
@@ -51,7 +33,7 @@ resolved e
         }}
         title="All Reports"
         columns={[
-         // { title: "id", field: "_id" },
+          // { title: "id", field: "_id" },
           { title: "first name", field: "reporterId.FirstName" },
           { title: "last name", field: "reporterId.LastName" },
           { title: "locust", field: "DetectedLocust" },
@@ -62,28 +44,7 @@ resolved e
           { title: "faulty", field: "faulty", type: "boolean" },
           { title: "resolved", field: "resolved", type: "boolean" },
         ]}
-        data={
-          reports
-         
-         
-         
-          //   {
-          //     name: "Mehmet",
-          //     surname: "Baran",
-          //     birthYear: 1987,
-          //     dateJoined: new Date().getFullYear(),
-          //     region: "Bolu",
-          //     expert: true,
-          //   },
-          //   {
-          //     name: "Zerya Betül",
-          //     surname: "Baran",
-          //     birthYear: 2017,
-          //     dateJoined: new Date().getFullYear(),
-          //     region: "addis ababa",
-          //     expert: false,
-          //   },
-        }
+        data={reports}
         options={{
           exportButton: true,
         }}

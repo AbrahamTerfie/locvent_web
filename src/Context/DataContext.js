@@ -83,9 +83,11 @@ export default function Store({ children }) {
     }
   }
 
+
+
   async function getActiveAgents(token){
     try {
-      const url = `${APILINK}/api/user/getAllExperts/0/${token}`;
+      const url = `${APILINK}/api/user/getAllUsers/0/${token}`;
       const data = await fetch(url);
       const resp = await data.json();
       setActiveAgents(resp);
