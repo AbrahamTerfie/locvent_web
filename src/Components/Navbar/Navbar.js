@@ -45,13 +45,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-mainbg">
+    <nav
+      className=" navbar-expand-lg  navbar-mainbg  "
+
+      //  navbar
+    >
       <NavLink
         style={{
           fontFamily: "sans-serif",
           fontSize: "1.8em",
           fontWeight: "100",
-          paddingLeft:'5em'
+          paddingLeft: "5em",
+          marginTop:'30px'
         }}
         className="navbar-brand navbar-logo"
         to={routes.home}
@@ -60,7 +65,7 @@ const Navbar = () => {
         locvent admin
       </NavLink>
 
-      <button
+      {/* <button
         className="navbar-toggler"
         onClick={function () {
           setTimeout(function () {
@@ -75,11 +80,11 @@ const Navbar = () => {
         aria-label="Toggle navigation"
       >
         <i className="fas fa-bars text-white"></i>
-      </button>
+      </button> */}
 
       <div
         style={{
-          // display: "flex",
+          display: "flex",
           justifyContent: "flex-end",
 
           paddingRight: "20px",

@@ -14,6 +14,7 @@ import Contact from './pages/Contact/Contact';
 import Home from './pages/Home/Home';
 import Broadcast from './pages/Broadcast/Broadcast';
 import Settings from './pages/Settings/Settings';
+import Reports from './pages/Reports/Reporrs';
 import Navbar from './Components/Navbar/Navbar';
 
 
@@ -48,6 +49,9 @@ export default function App() {
          </Route>
          <Route path={routes.contacts} exact>
            <Contact/>
+         </Route>
+         <Route path={routes.reports} exact>
+           <Reports/>
          </Route>
          <Redirect to="/" />
        </Switch>

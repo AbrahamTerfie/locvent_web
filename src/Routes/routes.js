@@ -8,4 +8,5 @@ export const routes ={
     contacts: "/contacts",
     broadcast: "/broadcast",
     settings: "/settings",
+    reports:'/reports'
 }
