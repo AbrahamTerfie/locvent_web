@@ -5,7 +5,25 @@ import { Form } from "../../Components/NoticeComponents/Form";
 import { Note } from "../../Components/NoticeComponents/Note";
 export default function NoticePost() {
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "100%",
+        marginTop: "2em",
+        overflow: "auto"
+      }}
+    >
+      <h4
+        style={{
+          textAlign: "center",
+          marginBottom: "1em",
+          color: "#095B59",
+          fontSize: "1.5em",
+          fontWeight: "300",
+        }}
+      >
+        {" "}
+        write a notice to broadcast{" "}
+      </h4>
       <Form>
         <Button
           style={{
@@ -15,7 +33,7 @@ export default function NoticePost() {
           color="success"
         >
           {" "}
-          new note{" "}
+          post notice{" "}
         </Button>
       </Form>
       <Note />

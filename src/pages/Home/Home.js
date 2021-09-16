@@ -5,7 +5,7 @@ import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
 import { Context } from "../../Context/DataContext";
 const Home = () => {
-  const [state]= useContext(Context)
+  const {state}= useContext(Context)
   console.log('this is app state' , state)
 
   return (
