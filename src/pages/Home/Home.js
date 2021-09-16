@@ -91,7 +91,7 @@ const Home = () => {
           display: "flex",
         }}
       >
-        <Cards title={langauge.Newreports} value={newReport} />
+        <Cards title={langauge.todaysreport} value={newReport} />
         <Cards title={langauge.ActiveAgents} value={agents} />
         <Cards title={langauge.Faultyreports} value={faulty} />
         <Cards title={langauge.Onhold} value={onhold} />

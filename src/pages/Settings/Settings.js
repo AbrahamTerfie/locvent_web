@@ -4,7 +4,8 @@ import { Context } from "../../Context/DataContext";
 import { Button } from "reactstrap";
 
 const Settings = () => {
-  const { langauge, setAmharic, setOromifaa, setTig } = useContext(Context);
+  const { langauge, setAmharic, setOromifaa, setTig, setEnglish } =
+    useContext(Context);
   console.log("langguahess", langauge);
 
   return (
@@ -20,6 +21,9 @@ const Settings = () => {
           justifyContent: "space-around",
         }}
       >
+        <Button onClick={() => setEnglish()} outline color="primary">
+          english{" "}
+        </Button>
         <Button onClick={() => setAmharic()} outline color="success">
           amharic{" "}
         </Button>

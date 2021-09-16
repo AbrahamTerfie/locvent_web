@@ -7,7 +7,9 @@ import { Context } from "../../Context/DataContext";
 
 const Contact = () => {
 
-  const {activeAgents , langauge } = useContext(Context)
+
+  const { activeAgents, langauge } = useContext(Context);
+
 
   console.log('agents in Contact ',activeAgents)
 
@@ -21,7 +23,7 @@ const Contact = () => {
         backgroundColor: "#F5F5F5",
       }}
     >
-      <h4 className="p-4">All Agents</h4>
+      <h4 className="p-4">{langauge.Agents}</h4>
       <MaterialTable
         style={{
           color: "#095B59",
@@ -29,14 +31,14 @@ const Contact = () => {
           fontSize: ".8em",
           border: "1px solid #e5e5e5",
         }}
-        title={langauge.AllAgets}
+        title={langauge.Agents}
         columns={[
           { title: "userName", field: "UserName" },
-          { title: "Name", field: "FirstName" },
-          { title: "Surname", field: "LastName" },
-          { title: "gender", field: "Gender", },
-          { title: "last logged in", field: "LastLogin" },
-          { title: "phone number ", field: "PhoneNumber" },
+          { title: langauge.FirstName, field: "FirstName" },
+          { title: langauge.LastName, field: "LastName" },
+          { title: langauge.Gender, field: "Gender", },
+          { title: langauge.DateJoined, field: "LastLogin" },
+          { title: langauge.PhoneNumber, field: "PhoneNumber" },
           { title: "Type", field: "Role.RoleName",  },
         ]}
         data={activeAgents}

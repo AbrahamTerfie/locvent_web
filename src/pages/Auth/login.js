@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 async function callMeDaddy() {
   const requestOptions2 = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       username: "admin",
@@ -18,14 +18,15 @@ async function callMeDaddy() {
     }),
   };
 
-const APILINK =  "http://192.168.8.107:5000/"
+  const APILINK = "http://192.168.8.107:5000/";
   let urlcath = `${APILINK}api/user/loginAdmin`;
   let response = await fetch(urlcath, requestOptions2);
   const json = await response.json();
 }
 
 export default function Login() {
-  const {login , langauge} = useContext(Context);
+  const { login, langauge, setAmharic, setOromifaa, setTig, setEnglish } =
+    useContext(Context);
 
   const [UserName, setUserName] = useState("");
   const [password, setpassword] = useState("");
@@ -112,7 +113,31 @@ export default function Login() {
             >
               {langauge.login}
             </Button>
+
             {/* </Link> */}
+          </div>
+          <p className="text-center" color="#095B59">change language </p>
+
+          <div
+            className="text-center  mt-4  pt-4"
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <Button onClick={() => setEnglish()} outline color="primary">
+              english{" "}
+            </Button>
+            <Button onClick={() => setAmharic()} outline color="success">
+              amharic{" "}
+            </Button>
+            <Button onClick={() => setTig()} outline color="warning">
+              tigregna{" "}
+            </Button>
+            <Button onClick={() => setOromifaa()} outline color="danger">
+              oromifaa{" "}
+            </Button>
           </div>
         </div>
       </div>

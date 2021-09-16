@@ -20,7 +20,7 @@ export default function Store({ children }) {
   const [activeAgents, setActiveAgents] = useState({});
   const [notes, setNotes] = useState([]);
   const [inputNote, setInputNote] = useState("");
-  const [langauge, setLanguage] = useState(lang.amharic);
+  const [langauge, setLanguage] = useState(lang.English);
 
   function setAmharic() {
     setLanguage(lang.amharic);
@@ -32,6 +32,9 @@ export default function Store({ children }) {
 
   function setTig() {
     setLanguage(lang.tig);
+  }
+  function setEnglish() {
+    setLanguage(lang.English);
   }
 
   function addNote(note) {
@@ -133,7 +136,8 @@ export default function Store({ children }) {
         setLanguage,
         setAmharic,
         setOromifaa,
-        setTig
+        setTig,
+        setEnglish
       }}
     >
       {children}
