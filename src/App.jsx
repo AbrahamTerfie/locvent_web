@@ -72,7 +72,6 @@ export default function App(props) {
 
       <Store>
         <AppContainer />
-
       </Store>
     </div>
 

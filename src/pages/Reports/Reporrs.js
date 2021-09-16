@@ -1,7 +1,24 @@
-import React from "react";
 import MaterialTable from "material-table";
+import React, { useEffect, useContext } from "react";
+
+import { Context } from "../../Context/DataContext";
+
+
 
 const Reports = () => {
+
+  const {reports} = useContext(Context)
+console.log('reportss form reports ', reports)
+  // useEffect(async () => {
+  //   // this fetch the reports
+
+  //   const url = `http://192.168.8.107:5000/api/report/getForAdmin/0/${userData.token}`
+  //    const data = await fetch(url)
+  //   const resp = await data.json()
+  //   console.log( "report data response ", resp)
+  // }, [])
+
+
   return (
     <div
       style={{
@@ -34,51 +51,22 @@ resolved e
         }}
         title="All Reports"
         columns={[
-          { title: "id", field: "id" },
-          { title: "first name", field: "firstName" },
-          { title: "last name", field: "lastName" },
-          { title: "locust", field: "locust" },
-          { title: "lattitude", field: "lattitude" },
-          { title: "longitude", field: "longitude" },
+         // { title: "id", field: "_id" },
+          { title: "first name", field: "reporterId.FirstName" },
+          { title: "last name", field: "reporterId.LastName" },
+          { title: "locust", field: "DetectedLocust" },
+          { title: "lattitude", field: "ReportLatitude" },
+          { title: "longitude", field: "ReportLongitude" },
 
-          { title: "on hold", field: "ohHold", type: "boolean" },
+          { title: "on hold", field: "isHold", type: "boolean" },
           { title: "faulty", field: "faulty", type: "boolean" },
           { title: "resolved", field: "resolved", type: "boolean" },
         ]}
-        data={[
-          {
-            id: 1,
-            firstName: "John",
-            lastName: "Doe",
-            locust: "red",
-            lattitude: "1.1",
-            longitude: "1.1",
-            ohHold: true,
-            faulty: true,
-            resolved: true,
-          },
-          {
-            id: 2,
-            firstName: "Jane",
-            lastName: "Doe",
-            locust: "blue",
-            lattitude: "1.1",
-            longitude: "1.1",
-            ohHold: false,
-            faulty: false,
-            resolved: false,
-          },
-          {
-            id: 3,
-            firstName: "John",
-            lastName: "Doe",
-            locust: "green",
-            lattitude: "1.1",
-            longitude: "1.1",
-            ohHold: false,
-            faulty: false,
-            resolved: false,
-          },
+        data={
+          reports
+         
+         
+         
           //   {
           //     name: "Mehmet",
           //     surname: "Baran",
@@ -95,7 +83,7 @@ resolved e
           //     region: "addis ababa",
           //     expert: false,
           //   },
-        ]}
+        }
         options={{
           exportButton: true,
         }}

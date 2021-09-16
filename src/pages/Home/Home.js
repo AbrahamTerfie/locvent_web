@@ -1,13 +1,47 @@
-import React  , {useContext}from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Cards from "../../Components/Cards";
 import { Row, Col } from "reactstrap";
 import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
 import { Context } from "../../Context/DataContext";
 const Home = () => {
-  const {state}= useContext(Context)
-  console.log('this is app state' , state)
+  const { state, getReport, userData, reports, getActiveAgents, activeAgents } =
+    useContext(Context);
+  const [faulty, setFaulty] = useState(0);
+  const [onhold, setOnHold] = useState(0);
+  const [newReport, setNewReport] = useState(0);
+  const [agents , setAgents] = useState(0);
+  console.log("this is app state", state);
 
+  useEffect(
+    async () => (
+      userData
+        ? getActiveAgents(userData.token) && getReport(userData.token)
+        : null,
+      console.log("user Agents asdf ", activeAgents)
+    ),
+    [userData]
+  );
+
+  useEffect(async () => {
+    if (reports) {
+      let faulty = 0;
+      let onhold = 0;
+      let newReports = 0;
+      for (let i = 0; i < reports.length; i++) {
+        if (reports[i].faulty) faulty = faulty + 1;
+        if (reports[i].isHold) onhold = onhold + 1;
+        if (reports[i].resolved == false) newReports = newReports + 1;
+      }
+      setFaulty(faulty);
+      setOnHold(onhold);
+      setNewReport(newReports);
+    }
+  }, [reports]);
+
+  useEffect(async () => {
+    setAgents(activeAgents.length)
+  },[activeAgents])
   return (
     <div className="container">
       <div
@@ -45,10 +79,10 @@ const Home = () => {
           display: "flex",
         }}
       >
-        <Cards title="new reports" value="89" />
-        <Cards title="active agents" value="78" />
-        <Cards title="faulty reports" value="2" />
-        <Cards title="on hold" value="20" />
+        <Cards title="new reports" value={newReport} />
+        <Cards title="active agents" value={agents} />
+        <Cards title="faulty reports" value={faulty} />
+        <Cards title="on hold" value={onhold} />
       </div>
       <div>
         <Row>
@@ -56,13 +90,11 @@ const Home = () => {
             <ReportGraph />
           </Col>
           <Col md="4" className="mt-4">
-
-              <Infocards title="resolved" value="30"  />
-              <Infocards  title="recived" value="20" />
-              <Infocards title="avg responce time" value="40" />
-              <Infocards title="avg first response time" value="60" />
-              <Infocards title="resolution with SLA" value="20"  />
-
+            <Infocards title="resolved" value="30" />
+            <Infocards title="recived" value="20" />
+            <Infocards title="avg responce time" value="40" />
+            <Infocards title="avg first response time" value="60" />
+            <Infocards title="resolution with SLA" value="20" />
           </Col>
         </Row>
       </div>
