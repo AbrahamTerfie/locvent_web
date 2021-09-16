@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { routes } from "../../Routes/routes";
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
-import route from "color-convert/route";
+
 
 const Navbar = () => {
   function animation() {

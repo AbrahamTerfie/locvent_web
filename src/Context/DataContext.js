@@ -5,6 +5,7 @@ const initState = {
 
   activeStation: {},
   admin: false,
+  activeRoute:"",
   showNavBar: true,
 };
 export const Context = createContext(initState);

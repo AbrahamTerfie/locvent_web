@@ -3,8 +3,6 @@ import Cards from "../../Components/Cards";
 import { Row, Col } from "reactstrap";
 import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
-import { routes } from "../../Routes/routes";
-import {Link} from "react-router-dom";
 import { Context } from "../../Context/DataContext";
 const Home = () => {
   const [state]= useContext(Context)

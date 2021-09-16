@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Form, FormGroup, Input, Button } from "reactstrap";
+import {  FormGroup, Input, Button } from "reactstrap";
 import LOGO from "../../Assets/LOGO.png";
 import { routes } from "../../Routes/routes";
 import { Link } from "react-router-dom";

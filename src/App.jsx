@@ -1,6 +1,5 @@
 
-import React, { useContext, useEffect } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useContext } from 'react';
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -17,8 +16,6 @@ import Reports from './pages/Reports/Reporrs';
 import Navbar from './Components/Navbar/Navbar';
 import Login from './pages/Auth/login'
 import Store, { Context } from './Context/DataContext'
-
-
 import { useLocation } from 'react-router-dom'
 
 function AppContainer() {
@@ -26,10 +23,6 @@ function AppContainer() {
   const { state, setState } = useContext(Context)
   const location = useLocation();
   console.log('current route ', location.pathname);
-
-
-
-
 
   return (
     <Router>
