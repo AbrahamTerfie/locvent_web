@@ -1,11 +1,15 @@
-import React from "react";
+import React  , {useContext}from "react";
 import Cards from "../../Components/Cards";
 import { Row, Col } from "reactstrap";
 import ReportGraph from "../../Components/ReportGraph";
 import Infocards from "../../Components/Infocards";
 import { routes } from "../../Routes/routes";
 import {Link} from "react-router-dom";
+import { Context } from "../../Context/DataContext";
 const Home = () => {
+  const [state]= useContext(Context)
+  console.log('this is app state' , state)
+
   return (
     <div className="container">
       <div

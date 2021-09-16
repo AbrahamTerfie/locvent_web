@@ -56,7 +56,7 @@ const Navbar = () => {
           fontSize: "1.8em",
           fontWeight: "100",
           paddingLeft: "5em",
-          marginTop:'30px'
+          marginTop: "30px",
         }}
         className="navbar-brand navbar-logo"
         to={routes.home}
@@ -64,23 +64,6 @@ const Navbar = () => {
       >
         locvent admin
       </NavLink>
-
-      {/* <button
-        className="navbar-toggler"
-        onClick={function () {
-          setTimeout(function () {
-            animation();
-          });
-        }}
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i className="fas fa-bars text-white"></i>
-      </button> */}
 
       <div
         style={{
@@ -103,6 +86,12 @@ const Navbar = () => {
           <li className="nav-item active">
             <NavLink className="nav-link" to={routes.home} exact>
               <i className="fas fa-tachometer-alt"></i>Overview
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link" to={routes.reports} exact>
+              <i className="far fa-address-book"></i>reports
             </NavLink>
           </li>
 
