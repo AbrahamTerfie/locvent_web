@@ -50,7 +50,7 @@ function AppContainer() {
             <Route path={routes.reports} exact>
               <Reports />
             </Route>
-            <Redirect to={routes.home} />
+            <Redirect to={routes.login} />
           </Switch>
         </main>
       </Router>

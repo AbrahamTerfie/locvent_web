@@ -1,16 +1,28 @@
 import React from "react";
-import { Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Col, Form, FormGroup, Input, Button } from "reactstrap";
+import LOGO from "../../Assets/LOGO.png";
 export default function Login() {
   return (
     <div
+
+    className='loginContainer'
       style={{
-        margin: "20%",
-        height: "20em",
-        width: "60em",
-        border: "2px solid #095B59",
+      
+        padding: "5em",
+        // width: "60em",
+        backgroundColor: "#095B59",
+        // border: "2px solid #095B59",
         borderRadius: "5px",
+        justifySelf: "center",
+
       }}
     >
+      <img  
+      style={{
+          height: "7em",
+          width: "7em",
+      }}
+      src={LOGO} alt="Logo" />
       <h2
         className="text-center"
         style={{

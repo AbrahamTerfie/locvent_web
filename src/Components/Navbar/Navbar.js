@@ -84,7 +84,7 @@ const Navbar = () => {
           </div>
 
           <li className="nav-item active">
-            <NavLink className="nav-link" to={routes.home} exact>
+            <NavLink className="nav-link" to={routes.login} exact>
               <i className="fas fa-tachometer-alt"></i>Overview
             </NavLink>
           </li>
