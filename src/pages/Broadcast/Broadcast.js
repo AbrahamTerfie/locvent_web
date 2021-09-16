@@ -2,7 +2,6 @@ import React from "react";
 
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
-  MainContainer,
   ChatContainer,
   MessageList,
   Message,
@@ -15,13 +14,14 @@ import {
   SendButton,
   Avatar,
 } from "@chatscope/chat-ui-kit-react";
-import { Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";     
+import NoticePost from "./NoticePost";
 
 const Broadcast = () => {
   return (
     <Row className="container m-4 p-4  mt-0 pt-0 ">
       <Col md={6}>
-        <h1> notive posting aera </h1>
+        <NoticePost />
       </Col>
       <Col
         md={6}
