@@ -31,12 +31,12 @@ function AppContainer() {
 
       <main>
         <Switch>
-          {loggedIN ?
-            null :
-            <Route path={routes.home} exact>
-              <Login />
-            </Route>
-          }
+          <Route path={routes.home} exact>
+            {loggedIN ?
+              null
+              : <Login />
+            }
+          </Route>
           <Route path={routes.login} exact>
             <Home />
           </Route>
@@ -72,6 +72,7 @@ export default function App(props) {
 
       <Store>
         <AppContainer />
+
       </Store>
     </div>
 

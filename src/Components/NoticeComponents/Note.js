@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState , useEffect } from "react";
 import { Context } from "../../Context/DataContext";
 import { Button } from "reactstrap";
 
@@ -6,6 +6,12 @@ import styles from "../../Styles/Note.module.css";
 
 export function Note() {
   const { notes, removeNote, editNote } = useContext(Context);
+  const [settedNotes , setNotesFunction] = useState([])
+  useEffect(async () => {
+    const resp = await fetch('http://192.168.8.107:5000/api/broadCast/getAllBroadCast')
+    const json = await resp.json()
+    console.log(json)
+  }, [])
 
   function getListItems() {
     return notes.map((note) => (
