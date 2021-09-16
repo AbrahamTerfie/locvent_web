@@ -5,6 +5,7 @@ const initState = {
 
   activeStation: {},
   admin: false,
+  showNavBar: true,
 };
 export const Context = createContext(initState);
 export default function Store({ children }) {
