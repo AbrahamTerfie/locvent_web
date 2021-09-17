@@ -22,9 +22,6 @@ const Home = () => {
   const [newReport, setNewReport] = useState(0);
   const [agents, setAgents] = useState(0);
 
-useEffect(()=>{
-  console.log("after login" , JSON.parse(localStorage.getItem("user")).token)
-} , [])
   useEffect(
     async () => (
       userData

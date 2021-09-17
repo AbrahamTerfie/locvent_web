@@ -1,19 +1,24 @@
 import MaterialTable from "material-table";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext , useState } from "react";
 
 import { Context } from "../../Context/DataContext";
 
 const Reports = () => {
-  const { reports, langauge } = useContext(Context);
-  console.log("reportss form reports ", reports);
-  // useEffect(async () => {
-  //   // this fetch the reports
+  const {  state,
+    getReport,
+    userData,
+    getActiveAgents,
+    activeAgents,
+    langauge, } = useContext(Context);
+    const [reports , setReports] = useState([])
+    useEffect(async ()=>{
+      const APILINK = "http://192.168.8.107:5000";
+      const url = `${APILINK}/api/report/getForAdmin/0/${JSON.parse(localStorage.getItem("user")).token}`;
+      const data = await fetch(url);
+      const resp = await data.json();
+      setReports(resp);
+    },[])
 
-  //   const url = `http://192.168.8.107:5000/api/report/getForAdmin/0/${userData.token}`
-  //    const data = await fetch(url)
-  //   const resp = await data.json()
-  //   console.log( "report data response ", resp)
-  // }, [])
 
   return (
     <div
@@ -34,17 +39,49 @@ const Reports = () => {
         title={langauge.Reports}
         columns={[
           // { title: "id", field: "_id" },
-          { title: "first name", field: "reporterId.FirstName" },
-          { title: "last name", field: "reporterId.LastName" },
-          { title: "locust", field: "DetectedLocust" },
-          { title: "lattitude", field: "ReportLatitude" },
-          { title: "longitude", field: "ReportLongitude" },
+          { title: "first name", field: "reporterId.FirstName" ,  editable: 'never'},
+          { title: "last name", field: "reporterId.LastName" , editable: 'never'},
+          { title: "locust", field: "DetectedLocust" ,  editable: 'never'},
+          { title: "lattitude", field: "ReportLatitude" ,  editable: 'never' },
+          { title: "longitude", field: "ReportLongitude" ,  editable: 'never' },
 
           { title: langauge.Onhold, field: "isHold", type: "boolean" },
           { title: langauge.Faultyreports, field: "faulty", type: "boolean" },
           { title: langauge.resolved, field: "resolved", type: "boolean" },
         ]}
         data={reports}
+        editable={{
+        
+          onRowUpdate: async (newData, oldData) =>{
+          
+                const APILINK = "http://192.168.8.107:5000";
+    
+              const requestOptions2 = {
+                method: "PUT",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: newData._id,
+                  faulty : newData.faulty,
+                  isHold : newData.isHold,
+                  resolved : newData.resolved,
+                
+                }),
+              };
+              let urlcath = `${APILINK}/api/report/update`;
+              const data = await fetch(urlcath, requestOptions2)
+              const json = await data.json()
+               
+              const url = `${APILINK}/api/report/getForAdmin/0/${JSON.parse(localStorage.getItem("user")).token}`;
+              const dataURL = await fetch(url);
+              const resp = await dataURL.json();
+              setReports(resp);
+              
+              }
+            
+          }}
         options={{
           exportButton: true,
         }}

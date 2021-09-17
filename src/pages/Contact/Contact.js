@@ -1,6 +1,6 @@
 
 import MaterialTable from "material-table";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext , useState} from "react";
 
 import { Context } from "../../Context/DataContext";
 
@@ -8,12 +8,20 @@ import { Context } from "../../Context/DataContext";
 const Contact = () => {
 
 
-  const { activeAgents, langauge } = useContext(Context);
+  const {langauge } = useContext(Context);
 
 
-  console.log('agents in Contact ',activeAgents)
 
+  const [activeAgents , setActiveAgents] = useState([])
+  useEffect(async ()=>{
 
+    const APILINK = "http://192.168.8.107:5000";
+    const url = `${APILINK}/api/user/getAllUsers/0/${JSON.parse(localStorage.getItem("user")).token}`;
+    const data = await fetch(url);
+    const resp = await data.json();
+    setActiveAgents(resp);
+    
+  },[])
  
   return (
     <div
@@ -33,15 +41,44 @@ const Contact = () => {
         }}
         title={langauge.Agents}
         columns={[
-          { title: "userName", field: "UserName" },
-          { title: langauge.FirstName, field: "FirstName" },
-          { title: langauge.LastName, field: "LastName" },
-          { title: langauge.Gender, field: "Gender", },
-          { title: langauge.DateJoined, field: "LastLogin" },
-          { title: langauge.PhoneNumber, field: "PhoneNumber" },
-          { title: "Type", field: "Role.RoleName",  },
+          { title: "userName", field: "UserName" , editable: 'never' },
+          { title: langauge.FirstName, field: "FirstName" , editable: 'never' },
+          { title: langauge.LastName, field: "LastName" , editable: 'never' },
+          { title: langauge.Gender, field: "Gender", editable: 'never'},
+          { title: langauge.DateJoined, field: "LastLogin" , editable: 'never' },
+          { title: langauge.PhoneNumber, field: "PhoneNumber" , editable: 'never' },
+          { title: "Type", field: "Role.RoleName", editable: 'never' },
+          {title : "Blocked" , field : "blocked" , type: "boolean"}
         ]}
         data={activeAgents}
+        editable={{
+        
+          onRowUpdate: async (newData, oldData) =>{
+          
+                const APILINK = "http://192.168.8.107:5000";
+    
+              const requestOptions2 = {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: newData._id,
+                  blocked : newData.blocked
+                  
+                }),
+              };
+              let urlcath = `${APILINK}/api/user/blockUser`;
+              const data = await fetch(urlcath, requestOptions2)
+              const json = await data.json()
+              
+              window.location.replace('http://localhost:3000/contacts')
+
+              
+              }
+            
+          }}
         options={{
           exportButton: true,
         }}

@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { Redirect } from "react-router";
 import lang from "../Language/lang.json";
 const APILINK = "http://192.168.8.107:5000";
 
@@ -54,6 +55,7 @@ export default function Store({ children }) {
      fetch(urlcath, requestOptions2).then((data)=>{
        if(data.status == 200){
         //setNotes(notes.filter((note) => note._id !== id));
+        window.location.href = "http://localhost:3000/broadcast"
          setNotes((prev) => [note, ...prev]);
        }
      })
@@ -145,8 +147,10 @@ export default function Store({ children }) {
       authenticate(response.status, json);
       setUserData(json);
       localStorage.setItem("user", JSON.stringify(json));
- 
-      console.log("login response ", response.status);
+      window.location.replace('http://localhost:3000')
+
+
+      
     } catch (error) {
       console.log("login error from api  :", error);
     }
@@ -183,6 +187,7 @@ export default function Store({ children }) {
   return (
     <Context.Provider
       value={{
+        
         getActiveAgents,
         activeAgents,
         userData,

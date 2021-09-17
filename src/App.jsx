@@ -27,33 +27,38 @@ function AppContainer() {
 
   return (
     <Router>
-      { JSON.parse(localStorage.getItem("user")).token ?   <Navbar /> : null}
+      { JSON.parse(localStorage.getItem("user")) !== null ?   <Navbar /> : null}
 
       <main>
-        <Switch>
-          <Route path={routes.home} exact>
-            { JSON.parse(localStorage.getItem("user")).token  ?    null
-              : <Login />
-            }
-          </Route>
-          <Route path={routes.login} exact>
-            <Home />
-          </Route>
+      {(JSON.parse(localStorage.getItem("user")) !== null && JSON.parse(localStorage.getItem("user")) !== undefined )? 
+      <Switch>
+      <Route path={'/'} exact>
+      <Home />
+      </Route>
 
-          <Route path={routes.broadcast} exact>
-            <Broadcast />
-          </Route>
-          <Route path={routes.settings} exact>
-            <Settings />
-          </Route>
-          <Route path={routes.contacts} exact>
-            <Contact />
-          </Route>
-          <Route path={routes.reports} exact>
-            <Reports />
-          </Route>
-          <Redirect to={routes.login} />
+      <Route path={routes.broadcast} exact>
+        <Broadcast />
+      </Route>
+      <Route path={routes.settings} exact>
+        <Settings />
+      </Route>
+      <Route path={routes.contacts} exact>
+        <Contact />
+      </Route>
+      <Route path={routes.reports} exact>
+        <Reports />
+      </Route>
+    </Switch>
+        :
+        <Switch>
+          <Route  exact>
+            <Login />
+        </Route>
+          
         </Switch>
+
+      }
+        
       </main>
     </Router>
 
@@ -77,3 +82,4 @@ export default function App(props) {
 
   );
 }
+
