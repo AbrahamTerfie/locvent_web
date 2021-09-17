@@ -29,6 +29,14 @@ const Reports = () => {
       }}
     >
       <h4 className="p-4"> {langauge.Reports} </h4>
+      <div>
+      <input
+        type="file"
+        id="upload-button"
+        style={{ display: "none" }}
+        //onChange={handleChange}
+      />
+      </div>
       <MaterialTable
         style={{
           color: "#095B59",

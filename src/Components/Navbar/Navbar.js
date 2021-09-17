@@ -117,6 +117,17 @@ const Navbar = () => {
               <i className="far fa-chart-bar"></i>{langauge.settings}
             </NavLink>
           </li>
+          <li className="nav-item">
+            <div className="nav-link" >
+              <i className="far fa-chart-bar" onClick={()=>
+               {
+                 localStorage.removeItem("user")
+                window.location.href = "http://localhost:3000"
+               }
+                }>Log out</i>
+            </div>
+          </li>
+          
         </ul>
       </div>
     </nav>
