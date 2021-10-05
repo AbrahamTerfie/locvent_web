@@ -8,7 +8,7 @@ export function Note() {
   const { notes, removeNote, editNote  ,setNotes} = useContext(Context);
   const [settedNotes , setNotesFunction] = useState([])
   useEffect(async () => {
-    const resp = await fetch('http://192.168.8.107:5000/api/broadCast/getAllBroadCast')
+    const resp = await fetch('http://localhost:5000/api/broadCast/getAllBroadCast')
     const json = await resp.json()
     console.log( "notifications", json)
     setNotes(json)

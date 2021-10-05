@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import { Redirect } from "react-router";
 import lang from "../Language/lang.json";
-const APILINK = "http://192.168.8.107:5000";
+const APILINK = "http://localhost:5000";
 
 const initState = {
   activeStation: {},

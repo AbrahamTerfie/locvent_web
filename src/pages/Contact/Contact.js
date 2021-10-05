@@ -15,7 +15,7 @@ const Contact = () => {
   const [activeAgents , setActiveAgents] = useState([])
   useEffect(async ()=>{
 
-    const APILINK = "http://192.168.8.107:5000";
+    const APILINK = "http://localhost:5000";
     const url = `${APILINK}/api/user/getAllUsers/0/${JSON.parse(localStorage.getItem("user")).token}`;
     const data = await fetch(url);
     const resp = await data.json();
@@ -55,7 +55,7 @@ const Contact = () => {
         
           onRowUpdate: async (newData, oldData) =>{
           
-                const APILINK = "http://192.168.8.107:5000";
+                const APILINK = "http://localhost:5000";
     
               const requestOptions2 = {
                 method: "POST",
