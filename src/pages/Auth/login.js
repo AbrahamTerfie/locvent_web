@@ -30,64 +30,9 @@ export default function Login() {
 
   const [UserName, setUserName] = useState("");
   const [password, setpassword] = useState("");
-  const [uploaded, setUploadTrue] = useState(0);
-
-  const onFormSubmit = (e) => {
-    e.preventDefault(); // Stop form submit
-    fileUpload(uploaded).then((response) => {
-      console.log(response.data);
-    });
-  };
-
-  const onChange = (e) => {
-    setUploadTrue(e.target.files[0]);
-  };
-
-  // useEffect(() => {
-  //   const fileInput = document.querySelector("#fileInput");
-  //   const formData = new FormData();
-
-  //   formData.append("file", fileInput.files[0]);
-  //   formData.append("test", "StringValueTest");
-
-  //   const options = {
-  //
-  //     body: formData,
-  //     // If you add this, upload won't work
-  //     // headers: {
-  //     //   'Content-Type': 'multipart/form-data',
-  //     // }
-  //   };
-  //   fetch("http://localhost:5000/ui/upload/file", options);
-  // }, uploaded);
-
-  const fileUpload = (file) => {
-    const url = "http://localhost:5000/api/detect/detectLocust";
-    const formData = new FormData();
-    formData.append("profile_pic", file);
-    formData.append("ReportLatitude", "8.8076");
-    formData.append("ReportLongitude", "38.808080");
-    formData.append("reporterId", "61346f039f3a0b2a19c9c147");
-
-    const config = {
-      method: "POST",
-      // headers: {
-      //   "content-type": "multipart/form-data",
-      // },
-      body: formData,
-    };
-
-    return fetch(url, config);
-  };
 
   return (
     <div className="loginContainer">
-      <form onSubmit={onFormSubmit}>
-        <h1>File Upload</h1>
-        <input type="file" onChange={onChange} />
-        <button type="submit">Upload</button>
-      </form>
-
       <img
         style={{
           marginLeft: "35%",

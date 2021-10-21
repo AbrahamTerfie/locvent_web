@@ -14,13 +14,16 @@ const Reports = () => {
   } = useContext(Context);
   const [reports, setReports] = useState([]);
   useEffect(async () => {
-    // const APILINK = "http://localhost:5000";
-    // const url = `${APILINK}/api/report/getForAdmin/0/${
-    //   JSON.parse(localStorage.getItem("user")).token
-    // }`;
-    // const data = await fetch(url);
-    // const resp = await data.json();
-    // setReports(resp);
+    const APILINK = "http://localhost:5000";
+    const url = `${APILINK}/api/report/getForAdmin/0/${
+      JSON.parse(localStorage.getItem("user")).token
+    }`;
+    console.log(url);
+    const data = await fetch(url);
+
+    const resp = await data.json();
+    console.log(resp);
+    setReports(resp);
   }, []);
 
   return (
@@ -42,7 +45,6 @@ const Reports = () => {
         }}
         title={langauge.Reports}
         columns={[
-          // { title: "id", field: "_id" },
           {
             title: "Name",
             field: "re",
@@ -57,14 +59,32 @@ const Reports = () => {
           { title: "lattitude", field: "ReportLatitude", editable: "never" },
           { title: "longitude", field: "ReportLongitude", editable: "never" },
 
-          { title: langauge.Onhold, field: "isHold", type: "boolean" },
-          { title: langauge.Faultyreports, field: "faulty", type: "boolean" },
-          { title: langauge.resolved, field: "resolved", type: "boolean" },
+          {
+            title: langauge.Onhold,
+            field: "isHold",
+            type: "boolean",
+            render: (rowData) => (rowData.isHold ? "True" : "False"),
+          },
+
+          {
+            title: langauge.Faultyreports,
+            field: "faulty",
+            type: "boolean",
+            render: (rowData) => (rowData.faulty ? "True" : "False"),
+          },
+          {
+            title: langauge.resolved,
+            field: "resolved",
+            type: "boolean",
+
+            render: (rowData) => (rowData.resolved ? "True" : "False"),
+          },
         ]}
         data={reports}
         editable={{
           onRowUpdate: async (newData, oldData) => {
             //const APILINK = "http://localhost:5000";
+            //const { id, isHold, faulty, resolved } = req.body;
           },
         }}
       />

@@ -22,10 +22,48 @@ const Home = () => {
   const [newReport, setNewReport] = useState(0);
   const [agents, setAgents] = useState(0);
 
+  const [uploaded, setUploadTrue] = useState(0);
+
+  const onFormSubmit = (e) => {
+    e.preventDefault(); // Stop form submit
+
+    fileUpload(uploaded).then((response) => {
+      if (response.status == 200) {
+        alert("Image Uploaded Succesfully");
+      } else {
+        alert("Error in Uploading Image");
+      }
+    });
+  };
+
+  const onChange = (e) => {
+    setUploadTrue(e.target.files[0]);
+  };
+
+  const fileUpload = (file) => {
+    const url = "http://localhost:5000/api/detect/detectLocust";
+    const formData = new FormData();
+    formData.append("profile_pic", file);
+    formData.append("ReportLatitude", "8.8076");
+    formData.append("ReportLongitude", "38.808080");
+    formData.append("reporterId", "61346f039f3a0b2a19c9c147");
+
+    const config = {
+      method: "POST",
+      // headers: {
+      //   "content-type": "multipart/form-data",
+      // },
+      body: formData,
+    };
+
+    return fetch(url, config);
+  };
+
   useEffect(
     async () => (
       userData
-        ? getActiveAgents(JSON.parse(localStorage.getItem("user")).token) && getReport( JSON.parse(localStorage.getItem("user")).token )
+        ? getActiveAgents(JSON.parse(localStorage.getItem("user")).token) &&
+          getReport(JSON.parse(localStorage.getItem("user")).token)
         : null,
       console.log("user Agents asdf ", activeAgents)
     ),
@@ -82,6 +120,24 @@ const Home = () => {
         >
           Abrham Terfie
         </h4>
+      </div>
+
+      <div className="card pmd-card bg-dark text-white">
+        <div className="card-body">
+          <div className="form-group">
+            <div className="custom-file pmd-custom-file-outline">
+              <form onSubmit={onFormSubmit}>
+                <input
+                  type="file"
+                  onChange={onChange}
+                  className="custom-file-input"
+                  id="inverse_customOutlineFile"
+                />
+                <button type="submit">Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div
